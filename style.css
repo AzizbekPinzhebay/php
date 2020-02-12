@@ -1,3 +1,7 @@
 body{
     background-attachment: fixed;
 }
+
+.marginB{
+    margin: 10px 0;
+}

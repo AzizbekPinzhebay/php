@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"  href="style.css">
 </head>
 <body>
+<div class='container'>
 <?php
 echo 'Tsak 1. Создайте папку, добавьте в нее файлы. Выведите содержимое папки на экран.<br>';
     
@@ -36,9 +38,10 @@ echo 'Tsak 1. Создайте папку, добавьте в нее файлы
            
             $openFold = opendir($fold);
             $cont =0;
+            
             while(($readFold = readdir($openFold)) !== false){
 
-                if($readFold !='.' && '..'){
+                if($readFold !='.' && $readFold != '..'){
 
                   $count += filesize($fold.'/'.$readFold);
                    
@@ -51,19 +54,54 @@ echo 'Tsak 1. Создайте папку, добавьте в нее файлы
         }
        
         echo  "<hr>";
-
-
-
 ?>
 
 
 
 <?php
-       echo  'Task 3. Создайте папку, добавьте в нее файлы. Выведите на страницу ссылки на эти файлы, чтобы при клике на них загружались сами файлы.<br>'
+       echo  'Task 3. Создайте папку, добавьте в нее файлы. Выведите на страницу ссылки на эти файлы, чтобы при клике на них загружались сами файлы.<br>';
+
+        if(is_dir($fold)){
+
+            $openTask2 = opendir($fold);
+
+            while(($readTask2 = readdir($openTask2)) !== false){
+
+               if($readTask2 != '.' && $readTask2 != '..'){
+                
+                echo "<a href='$fold/$readTask2' download>Скачать файл $readTask2</a><br>";
+               }
+                
+            }
+     }
+     echo  "<hr>";
 ?>
-        <img>
 
 
+    <div class="row">
+        <?php
+
+        echo 'Task 4 Сделайте сайт с обоями для рабочего стола, причем сами обои на странице сайта должны выводиться самостоятельно, на основе тех файлов, что заброшены в папку.<br>';
+
+            $wallpapers = 'desktopWallpaper';
+
+            if(is_dir($wallpapers)){
+
+            $openWallpaper = opendir($wallpapers);
+
+            while(($readWalpaper = readdir($openWallpaper)) !== false){
+
+                    if($readWalpaper != '.' && $readWalpaper != '..'){
+
+                       echo"<div class='col-4 marginB'><img src='$wallpapers/$readWalpaper' alt='$readWalpaper'></div>" ;
+                    }
+                }
+            }
+        ?>
+    </div>
+            
+
+    </div>
 </body>
 </html>
   
@@ -71,7 +109,7 @@ echo 'Tsak 1. Создайте папку, добавьте в нее файлы
 <!--
 
 
-Сделайте сайт с обоями для рабочего стола, причем сами обои на странице сайта должны выводиться самостоятельно, на основе тех файлов, что заброшены в папку.
+
 Создайте форму, которая принимает один параметр - имя папки, и по нажатию кнопки создает эту папку.
 Создайте форму, которая принимает один параметр - имя папки, и по нажатию кнопки удаляет эту папку. Папки для удаления - пустые.
 Создайте форму, которая принимает один параметр - имя файла, и после нажатия кнопки проверяет есть ли такой файл в папке.
