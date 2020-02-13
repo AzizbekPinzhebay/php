@@ -58,6 +58,9 @@ echo 'Tsak 1. Создайте папку, добавьте в нее файлы
 
 
 
+
+
+
 <?php
        echo  'Task 3. Создайте папку, добавьте в нее файлы. Выведите на страницу ссылки на эти файлы, чтобы при клике на них загружались сами файлы.<br>';
 
@@ -76,6 +79,11 @@ echo 'Tsak 1. Создайте папку, добавьте в нее файлы
      }
      echo  "<hr>";
 ?>
+
+
+
+
+
 
 
     <div class="row">
@@ -105,12 +113,15 @@ echo 'Tsak 1. Создайте папку, добавьте в нее файлы
        
             
 
+
+
+
      <?php
              echo 'Task 5. Создайте форму, которая принимает один параметр - имя папки, и по нажатию кнопки создает эту папку.<br>';
 
              $newFolder = $_GET['folder_5'];
 
-             mkdir($newFolder);
+             mkdir($newFolder, 0700);
     ?>  
 
         <form class="form-inline" action="index.php">
@@ -121,11 +132,14 @@ echo 'Tsak 1. Создайте папку, добавьте в нее файлы
 
             <button type="submit" class="btn btn-primary mb-2">Enter name folder</button>
         </form>
+        <hr>
 
 
 
 
 
+
+ 
         <?php
              echo 'Task 6 .Создайте форму, которая принимает один параметр - имя папки, и по нажатию кнопки удаляет эту папку. Папки для удаления - пустые..<br>';
 
@@ -144,7 +158,7 @@ echo 'Tsak 1. Создайте папку, добавьте в нее файлы
             </div>
 
             <button type="submit" class="btn btn-primary mb-2">Enter name folder</button>
-        </form>
+        </form> 
 
 
 
